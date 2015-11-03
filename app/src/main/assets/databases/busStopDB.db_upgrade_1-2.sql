@@ -1,1 +1,0 @@
-INSERT INTO "route" VALUES("Green", "Rice Creek Field Station", 0.0, 0.0, "07:43");

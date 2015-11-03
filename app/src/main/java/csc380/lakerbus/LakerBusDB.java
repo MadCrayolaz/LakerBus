@@ -10,7 +10,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 public class LakerBusDB extends SQLiteAssetHelper {
 
     private static final String DATABASE_NAME = "busStopDB.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
 
     public LakerBusDB(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
