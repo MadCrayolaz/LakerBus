@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -20,6 +22,9 @@ import java.util.Date;
 public class StopTimeViewer extends AppCompatActivity {
     ListView lv;
     String[] timeList;
+    String modify;
+    public final static String EXTRA_COORDS = "csc380.lakerbus.COORDS";
+    public final static String EXTRA_NAMES = "csc380.lakerbus.NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +70,22 @@ public class StopTimeViewer extends AppCompatActivity {
         System.out.println(al);
         al.set(0, "Next Time For Bus: " + al.get(0));
         al.set(1, "Can't Make This?\nNext Time: " + al.get(1));
+        al.add("Click Here To Visualize The Stop");
         timeList = al.toArray(new String[al.size()]);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, timeList);
         lv = (ListView) findViewById(R.id.listView2);
         lv.setAdapter(adapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                if(arg2 == 2) {
+                    Intent intent = new Intent(StopTimeViewer.this, MarkerActivity.class);
+                    intent.putExtra(EXTRA_COORDS, intent.getDoubleArrayExtra(RouteList.EXTRA_COORDS));
+                    intent.putExtra(EXTRA_NAMES, intent.getStringExtra(RouteList.EXTRA_NAMES));
+                    startActivity(intent);
+                }
+            }
+        });
     }
 }

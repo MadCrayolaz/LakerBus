@@ -43,6 +43,10 @@
             android:label="MapsActivity" >
         </activity>
         <activity
+            android:name=".MarkerActivity"
+            android:label="MarkerActivity" >
+        </activity>
+        <activity
             android:name=".StopTimeViewer"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/title_activity_stop_time_viewer"

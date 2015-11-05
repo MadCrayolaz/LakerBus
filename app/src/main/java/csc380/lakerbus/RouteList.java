@@ -20,6 +20,8 @@ public class RouteList extends AppCompatActivity {
 	String modify;
 	ListView lv;
     public final static String EXTRA_MESSAGE = "csc380.lakerbus.MESSAGE";
+	public final static String EXTRA_COORDS = "csc380.lakerbus.COORDS";
+	public final static String EXTRA_NAMES = "csc380.lakerbus.NAME";
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +87,9 @@ public class RouteList extends AppCompatActivity {
                 modify = cursor.getString(cursor.getColumnIndex("timearrive"));
                 Intent intent = new Intent(RouteList.this, StopTimeViewer.class);
                 intent.putExtra(EXTRA_MESSAGE, modify);
+				double[] coordList = {cursor.getDouble(cursor.getColumnIndex("xcoord")), cursor.getDouble(cursor.getColumnIndex("ycoord"))};
+				intent.putExtra(EXTRA_COORDS, coordList);
+				intent.putExtra(EXTRA_NAMES, cursor.getString(cursor.getColumnIndex("stop")));
                 startActivity(intent);
 			}
 		});
