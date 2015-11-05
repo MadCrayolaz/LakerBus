@@ -89,8 +89,4 @@ public class RouteList extends AppCompatActivity {
 			}
 		});
 	}
-
-	public void selectRoute(View view) {
-
-	}
 }

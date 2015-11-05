@@ -28,16 +28,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select"
-        android:id="@+id/route_select_button"
-        android:layout_alignParentStart="true"
-        android:onClick="selectRoute"
-        android:layout_below="@+id/route_spinner"
-        android:layout_alignParentLeft="true"/>
-
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +35,7 @@
         android:layout_alignParentStart="true"
         android:visibility="invisible"
         android:background="#FFFFFF"
-        android:layout_below="@+id/route_select_button"
-        android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/route_spinner"/>
 
 </RelativeLayout>
