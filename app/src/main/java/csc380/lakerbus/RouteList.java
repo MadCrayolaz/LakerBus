@@ -1,5 +1,6 @@
 package csc380.lakerbus;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class RouteList extends AppCompatActivity {
 		setSupportActionBar(toolbar);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+		final Context c = this;
 		lbdb = new LakerBusDB(this);
 		lv = (ListView) findViewById(R.id.listView);
 
@@ -38,6 +40,7 @@ public class RouteList extends AppCompatActivity {
 			if (!routeNames.contains(cursor.getString(cursor.getColumnIndex("_id"))))
 				routeNames.add(cursor.getString(cursor.getColumnIndex("_id")));
 		}
+		routeNames.add(0, "-SELECT ROUTE-");
 		namesArray = routeNames.toArray(new String[routeNames.size()]);
 
 		spin = (Spinner) findViewById(R.id.route_spinner);
@@ -45,8 +48,33 @@ public class RouteList extends AppCompatActivity {
 		cursor.close();
 		spin.setAdapter(stringArrayAdapter);
 
-		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+		spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+				String routeChosen = (String) spin.getSelectedItem();
+				ListView lv = (ListView) findViewById(R.id.listView);
+				lv.setVisibility(ListView.VISIBLE);
+				String selectQuery = "SELECT * FROM route WHERE _id = '" + routeChosen + "'";
+				Cursor cursor = lbdb.getReadableDatabase().rawQuery(selectQuery, null);
+				namesArray = new String[cursor.getCount()];
+				int i = 0;
+				while(cursor.moveToNext()){
+					namesArray[i] = cursor.getString(cursor.getColumnIndex("stop"));
+					i++;
+				}
+				ArrayAdapter<String> adapter = new ArrayAdapter<String>(c, android.R.layout.simple_list_item_1, android.R.id.text1, namesArray);
+				cursor.close();
+				lv.setAdapter(adapter);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parentView) {
+				// your code here
+			}
+		});
+
+		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 String routeChosen = (String) spin.getSelectedItem();
@@ -63,19 +91,6 @@ public class RouteList extends AppCompatActivity {
 	}
 
 	public void selectRoute(View view) {
-		String routeChosen = (String) spin.getSelectedItem();
-		ListView lv = (ListView) findViewById(R.id.listView);
-		lv.setVisibility(ListView.VISIBLE);
-		String selectQuery = "SELECT * FROM route WHERE _id = '" + routeChosen + "'";
-		Cursor cursor = lbdb.getReadableDatabase().rawQuery(selectQuery, null);
-		namesArray = new String[cursor.getCount()];
-		int i = 0;
-		while(cursor.moveToNext()){
-			namesArray[i] = cursor.getString(cursor.getColumnIndex("stop"));
-			i++;
-		}
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, namesArray);
-		cursor.close();
-		lv.setAdapter(adapter);
+
 	}
 }
