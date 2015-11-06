@@ -1,5 +1,6 @@
 package csc380.lakerbus;
 
+import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -25,7 +26,10 @@ public class MarkerActivity extends FragmentActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng ccenter = new LatLng(RouteList.COORDX, RouteList.COORDX);
+        mMap.getUiSettings().setTiltGesturesEnabled(false);
+        mMap.getUiSettings().setRotateGesturesEnabled(false);
+        mMap.getMyLocation().distanceTo(new Location())
+        LatLng ccenter = new LatLng(RouteList.COORDX, RouteList.COORDY);
         mMap.addMarker(new MarkerOptions().position(ccenter).title(RouteList.NAME));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ccenter, (float) 16.0));
     }
