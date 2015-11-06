@@ -74,10 +74,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.getUiSettings().setTiltGesturesEnabled(false);
+        mMap.getUiSettings().setRotateGesturesEnabled(false);
         mMap.setMyLocationEnabled(true);
         LatLng ccenter = new LatLng(43.464464, -76.479064);
         mMap.addMarker(new MarkerOptions().position(ccenter).title("Walmart"));
     }
 }
-
-/**/

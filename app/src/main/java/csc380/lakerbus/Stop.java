@@ -1,8 +1,5 @@
 package csc380.lakerbus;
 
-/**
- * Created by IAmACrayon on 10/23/2015.
- */
 public class Stop {
 
     private String stopName;

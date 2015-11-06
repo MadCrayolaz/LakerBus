@@ -22,9 +22,6 @@ import java.util.Date;
 public class StopTimeViewer extends AppCompatActivity {
     ListView lv;
     String[] timeList;
-    String modify;
-    public final static String EXTRA_COORDS = "csc380.lakerbus.COORDS";
-    public final static String EXTRA_NAMES = "csc380.lakerbus.NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +35,8 @@ public class StopTimeViewer extends AppCompatActivity {
         String toParse = intent.getStringExtra(RouteList.EXTRA_MESSAGE);
         Gson gson = new Gson();
         ArrayList<String> al = gson.fromJson(toParse, ArrayList.class);
-        DateFormat inputFormat = new SimpleDateFormat("hh:mm a");
+        al = TimeSorter.sort(al);
+        /*DateFormat inputFormat = new SimpleDateFormat("hh:mm a");
         DateFormat displayFormat = new SimpleDateFormat("HH.mm");
         ArrayList<Double> times = new ArrayList<Double>();
         for(String bbb:al) {
@@ -67,7 +65,7 @@ public class StopTimeViewer extends AppCompatActivity {
         catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println(al);
+        System.out.println(al);*/
         al.set(0, "Next Time For Bus: " + al.get(0));
         al.set(1, "Can't Make This?\nNext Time: " + al.get(1));
         al.add("Click Here To Visualize The Stop");
@@ -81,8 +79,6 @@ public class StopTimeViewer extends AppCompatActivity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 if(arg2 == 2) {
                     Intent intent = new Intent(StopTimeViewer.this, MarkerActivity.class);
-                    intent.putExtra(EXTRA_COORDS, intent.getDoubleArrayExtra(RouteList.EXTRA_COORDS));
-                    intent.putExtra(EXTRA_NAMES, intent.getStringExtra(RouteList.EXTRA_NAMES));
                     startActivity(intent);
                 }
             }
