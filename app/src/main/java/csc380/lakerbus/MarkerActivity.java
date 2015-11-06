@@ -28,7 +28,6 @@ public class MarkerActivity extends FragmentActivity implements OnMapReadyCallba
         mMap = googleMap;
         mMap.getUiSettings().setTiltGesturesEnabled(false);
         mMap.getUiSettings().setRotateGesturesEnabled(false);
-        mMap.getMyLocation().distanceTo(new Location())
         LatLng ccenter = new LatLng(RouteList.COORDX, RouteList.COORDY);
         mMap.addMarker(new MarkerOptions().position(ccenter).title(RouteList.NAME));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ccenter, (float) 16.0));
