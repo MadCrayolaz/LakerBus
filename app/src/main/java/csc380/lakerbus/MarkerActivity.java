@@ -28,8 +28,14 @@ public class MarkerActivity extends FragmentActivity implements OnMapReadyCallba
         mMap = googleMap;
         mMap.getUiSettings().setTiltGesturesEnabled(false);
         mMap.getUiSettings().setRotateGesturesEnabled(false);
-        LatLng ccenter = new LatLng(RouteList.COORDX, RouteList.COORDY);
-        mMap.addMarker(new MarkerOptions().position(ccenter).title(RouteList.NAME));
+        LatLng ccenter = null;
+        if(StopTimeViewer.destOrStart == 0) {
+            ccenter = new LatLng(RouteList.COORDX1, RouteList.COORDY1);
+        }
+        else {
+            ccenter = new LatLng(RouteList.COORDX2, RouteList.COORDY2);
+        }
+        mMap.addMarker(new MarkerOptions().position(ccenter).title(RouteList.NAME1));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ccenter, (float) 16.0));
     }
 }

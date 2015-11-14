@@ -48,12 +48,14 @@
         </activity>
         <activity
             android:name=".StopTimeViewer"
-            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/title_activity_stop_time_viewer"
-            android:parentActivityName=".RouteList">
+            android:parentActivityName=".RouteList"
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="csc380.lakerbus.RouteList"/>
+                android:value="csc380.lakerbus.RouteList" />
+        </activity>
+        <activity android:name=".FullSchedule" >
         </activity>
     </application>
 

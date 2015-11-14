@@ -10,28 +10,31 @@
     tools:showIn="@layout/activity_stop_time_viewer" tools:context="csc380.lakerbus.StopTimeViewer"
     android:background="#70AD47">
 
-    <TextClock
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textClock"
+        android:id="@+id/lview"
         android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/fullSchedule"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Current Time:"
+        android:text="Selected Track:"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
 
-    <ListView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView2"
-        android:layout_below="@+id/textClock"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:text="Full Schedule"
+        android:id="@+id/fullSchedule"
+        android:layout_marginBottom="163dp"
+        android:onClick="showFullSchedule"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

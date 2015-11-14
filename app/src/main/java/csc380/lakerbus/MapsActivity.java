@@ -17,17 +17,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.sql.SQLOutput;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
-    private final String TAG = "MyAwesomeApp";
+    private final String TAG = "LakerBus";
 
     private GoogleApiClient mGoogleApiClient;
 
-    private LocationRequest mLocationRequest;
-
     GoogleMap mMap;
-
-    private static final LocationRequest REQUEST = LocationRequest.create().setInterval(5000).setFastestInterval(16).setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +68,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    public void onLocationChanged(Location location) {}
+    public void onLocationChanged(Location location) {
+        System.out.println("WRITE WRITE WRITE");
+    }
 
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
