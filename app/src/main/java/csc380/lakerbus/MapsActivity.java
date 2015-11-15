@@ -1,5 +1,9 @@
 package csc380.lakerbus;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -18,14 +22,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.sql.SQLOutput;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private final String TAG = "LakerBus";
 
     private GoogleApiClient mGoogleApiClient;
+    private BroadcastReceiver receiver;
 
     GoogleMap mMap;
+    LatLng ccenter = new LatLng(43.464464, -76.479064);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +85,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setTiltGesturesEnabled(false);
         mMap.getUiSettings().setRotateGesturesEnabled(false);
         mMap.setMyLocationEnabled(true);
-        LatLng ccenter = new LatLng(43.464464, -76.479064);
         mMap.addMarker(new MarkerOptions().position(ccenter).title("Walmart"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ccenter, (float) 16.0));
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("android.intent.action.TIME_TICK");
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                addStuffToMap();
+            }
+        };
+        registerReceiver(receiver, filter);
+    }
+
+    public void addStuffToMap() {
+        mMap.clear();
+        ccenter = new LatLng(ccenter.latitude + 1, ccenter.longitude);
+        mMap.addMarker(new MarkerOptions().position(ccenter).title("Walmart"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ccenter, (float) 16.0));
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(receiver);
     }
 }

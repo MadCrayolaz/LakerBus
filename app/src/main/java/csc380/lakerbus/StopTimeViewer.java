@@ -1,5 +1,6 @@
 package csc380.lakerbus;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,7 @@ public class StopTimeViewer extends AppCompatActivity {
     String[] timeList;
     static int destOrStart = 0;
     static String JSONTIMES;
+    Context c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class StopTimeViewer extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Intent intent = getIntent();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        c = this;
 
         JSONTIMES = intent.getStringExtra(RouteList.EXTRA_MESSAGE);
         Gson gson = new Gson();
@@ -65,7 +68,7 @@ public class StopTimeViewer extends AppCompatActivity {
     }
 
     public void showFullSchedule(View view) {
-        Intent intent = new Intent(this, FullSchedule.class);
-        startActivity(intent);
+        //Intent intent = new Intent(c, FullSchedule.class);
+        //startActivity(intent);
     }
 }
