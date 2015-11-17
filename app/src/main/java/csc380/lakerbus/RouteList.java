@@ -59,8 +59,7 @@ public class RouteList extends AppCompatActivity implements GoogleApiClient.Conn
 		ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, namesArray);
 		cursor.close();
 		spin.setAdapter(stringArrayAdapter);
-
-
+        
 		spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {

@@ -68,7 +68,7 @@ public class StopTimeViewer extends AppCompatActivity {
     }
 
     public void showFullSchedule(View view) {
-        //Intent intent = new Intent(c, FullSchedule.class);
-        //startActivity(intent);
+        Intent intent = new Intent(c, FullSchedule.class);
+        startActivity(intent);
     }
 }

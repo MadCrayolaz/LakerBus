@@ -57,6 +57,15 @@
         </activity>
         <activity android:name=".FullSchedule" >
         </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search"
+            android:parentActivityName=".LandingPage"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="csc380.lakerbus.LandingPage" />
+        </activity>
     </application>
 
 </manifest>

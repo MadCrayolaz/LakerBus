@@ -21,12 +21,13 @@ public class FullSchedule extends AppCompatActivity {
 
         final Context c = this;
         Gson gson = new Gson();
-        ArrayList<String> al = gson.fromJson(StopTimeViewer.JSONTIMES, ArrayList.class);
+        String trimmed = StopTimeViewer.JSONTIMES.trim();
+        ArrayList<String> al = gson.fromJson(trimmed, ArrayList.class);
 
         timeList = al.toArray(new String[al.size()]);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(c, android.R.layout.simple_list_item_1, android.R.id.text1, timeList);
-        ListView lv = (ListView) findViewById(R.id.listView2);
-        lv.setAdapter(adapter);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(c, android.R.layout.simple_list_item_1, android.R.id.text1, timeList);
+        ListView lv2 = (ListView) findViewById(R.id.lview2);
+        lv2.setAdapter(adapter2);
 
         TextView tv = (TextView) findViewById(R.id.textView3);
         tv.setText("Stop Times For " + RouteList.NAME1);

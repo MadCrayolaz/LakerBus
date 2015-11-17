@@ -1,8 +1,13 @@
 package csc380.lakerbus;
 
 import android.location.Location;
+import android.util.Log;
+
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,6 +15,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+
+import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 
 public class Utilities {
     static Date now;
@@ -56,5 +67,37 @@ public class Utilities {
         toReturn.add(holder.get(holder.indexOf(now.toString()) + 1).toString());
         toReturn.add(holder.get(holder.indexOf(now.toString()) + 2).toString());
         return toReturn;
+    }
+
+    public static String getJson(String url) {
+        InputStream is = null;
+        String result = "";
+
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url);
+            HttpResponse response = httpclient.execute(httppost);
+            HttpEntity entity = response.getEntity();
+            is = entity.getContent();
+        }
+        catch(Exception e) {
+            return null;
+        }
+
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is,"utf-8"),8);
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+            is.close();
+            result = sb.toString();
+        }
+        catch(Exception e) {
+            return null;
+        }
+
+        return result;
     }
 }

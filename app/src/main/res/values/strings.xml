@@ -5,4 +5,5 @@
     <string name="title_activity_stop_list">StopList</string>
     <string name="title_activity_locations">Map</string>
     <string name="title_activity_stop_time_viewer">StopTimeViewer</string>
+    <string name="title_activity_search">SearchActivity</string>
 </resources>
