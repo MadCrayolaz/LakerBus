@@ -19,11 +19,11 @@
         android:paddingTop="20dp"
         android:paddingRight="40dp"
         android:paddingBottom="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="149dp"
         android:onClick="goToSearch"
-        android:background="@drawable/btn_seagull" />
+        android:background="@drawable/btn_seagull"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="142dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -35,10 +35,22 @@
         android:paddingTop="20dp"
         android:paddingRight="40dp"
         android:paddingBottom="20dp"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/stop_button"
-        android:layout_alignStart="@+id/stop_button"
+        android:background="@drawable/btn_seagull"
+        android:layout_above="@+id/stop_button"
         android:layout_alignRight="@+id/stop_button"
         android:layout_alignEnd="@+id/stop_button"
-        android:background="@drawable/btn_seagull" />
+        android:layout_alignLeft="@+id/stop_button"
+        android:layout_alignStart="@+id/stop_button"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@mipmap/app_icon"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/route_button"
+        android:layout_alignStart="@+id/route_button"
+        android:layout_alignRight="@+id/route_button"
+        android:layout_alignEnd="@+id/route_button"
+        android:layout_above="@+id/route_button"/>
 </RelativeLayout>

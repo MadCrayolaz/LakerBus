@@ -12,37 +12,25 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_search"
     tools:context="csc380.lakerbus.SearchActivity"
-    android:id="@+id/a">
+    android:id="@+id/a"
+    android:background="#70AD47">
 
-    <EditText
+    <SearchView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/searchButton"
-        android:layout_toStartOf="@+id/searchButton"
-        android:autoText="true"
-        android:background="#FFC000"
-        android:layout_alignBottom="@+id/searchButton"/>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        android:id="@+id/searchButton"
+        android:id="@+id/searchView"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:onClick="doSearch"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"/>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView2"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/searchView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:background="#FFFFFF"/>
 </RelativeLayout>

@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">LakerBus</string>
+    <string name="app_name">Laker Bus</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_route_list">RouteList</string>
-    <string name="title_activity_stop_list">StopList</string>
+    <string name="title_activity_route_list">Route List</string>
+    <string name="title_activity_stop_list">Stop List</string>
     <string name="title_activity_locations">Map</string>
-    <string name="title_activity_stop_time_viewer">StopTimeViewer</string>
-    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_stop_time_viewer">Track List</string>
+    <string name="title_activity_search">Search</string>
 </resources>

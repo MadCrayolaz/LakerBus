@@ -35,9 +35,6 @@ public class RouteList extends AppCompatActivity implements GoogleApiClient.Conn
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_route_list);
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-		setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		final Context c = this;
 		lbdb = new LakerBusDB(this);
