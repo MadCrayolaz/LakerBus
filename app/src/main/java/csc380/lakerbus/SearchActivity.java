@@ -28,7 +28,7 @@ public class SearchActivity extends AppCompatActivity implements GoogleApiClient
     public final static String EXTRA_MESSAGE = "csc380.lakerbus.MESSAGE";
     static double COORDX1, COORDY1, COORDX2, COORDY2;
     public static String NAME1, NAME2, modify;
-    private GoogleApiClient mGoogleApiClient;
+    public static GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -39,8 +39,23 @@
         android:layout_marginBottom="50dp"
         android:onClick="showFullSchedule"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp"/>
+        android:paddingRight="20dp"
+        android:layout_alignRight="@+id/trackButton"
+        android:layout_alignEnd="@+id/trackButton"
+        android:layout_alignLeft="@+id/trackButton"
+        android:layout_alignStart="@+id/trackButton"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Tracking"
+        android:id="@+id/trackButton"
+        android:background="@drawable/btn_seagull"
+        android:onClick="startTrack"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

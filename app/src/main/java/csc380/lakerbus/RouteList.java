@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,7 +28,7 @@ public class RouteList extends AppCompatActivity implements GoogleApiClient.Conn
     public final static String EXTRA_MESSAGE = "csc380.lakerbus.MESSAGE";
 	static double COORDX1, COORDY1, COORDX2, COORDY2;
 	static String NAME1, NAME2;
-	private GoogleApiClient mGoogleApiClient;
+	public static GoogleApiClient mGoogleApiClient;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {

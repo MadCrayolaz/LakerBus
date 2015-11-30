@@ -21,11 +21,11 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private final String TAG = "LakerBus";
 
-    private GoogleApiClient mGoogleApiClient = RouteList.mGoogleApiClient;
+    private GoogleApiClient mGoogleApiClient = SearchActivity.mGoogleApiClient;
     private BroadcastReceiver receiver;
     private int gotToDest = 0;
 
@@ -79,7 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMyLocationEnabled(true);
         Location l = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         LatLng ccenter = new LatLng(l.getLatitude(), l.getLongitude());
-        mMap.addMarker(new MarkerOptions().position(new LatLng(RouteList.COORDX1, RouteList.COORDY1)).title(RouteList.NAME1));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(SearchActivity.COORDX1, SearchActivity.COORDY1)).title(SearchActivity.NAME1));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ccenter, (float) 16.0));
 
         IntentFilter filter = new IntentFilter();
@@ -96,8 +96,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void checkDistance() {
         Location currLoc = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         Location dest = new Location("");
-        dest.setLatitude(RouteList.COORDX1);
-        dest.setLongitude(RouteList.COORDY1);
+        dest.setLatitude(SearchActivity.COORDX1);
+        dest.setLongitude(SearchActivity.COORDY1);
         Location l = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         LatLng ccenter = new LatLng(l.getLatitude(), l.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ccenter, (float) 16.0));

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -59,6 +58,11 @@ public class StopTimeViewer extends AppCompatActivity {
 
     public void showFullSchedule(View view) {
         Intent intent = new Intent(c, FullSchedule.class);
+        startActivity(intent);
+    }
+
+    public void startTrack(View view) {
+        Intent intent = new Intent(c, MapsActivity.class);
         startActivity(intent);
     }
 }
